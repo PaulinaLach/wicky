@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     # 'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.facebook',
     'bootstrap3',
+    'PIL',
+    'main',
 )
 
 MIDDLEWARE_CLASSES = (
