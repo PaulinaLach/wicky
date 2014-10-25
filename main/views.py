@@ -3,6 +3,7 @@ __author__ = 'paulina'
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Photograph, Album, Category
+from django.contrib import messages
 
 category_field = ['name']
 album_field = ['name', 'user']
@@ -19,6 +20,11 @@ class CategoryCreate(CreateView):
     success_url = '/'
     fields = category_field
 
+    def get_success_url(self):
+        messages.success(self.request, 'Category successfully created')
+        return super().get_success_url()
+
+
 class CategoryShow(DetailView):
     model = Category
 
@@ -27,9 +33,17 @@ class CategoryUpdate(UpdateView):
     success_url = '/'
     fields = category_field
 
+    def get_success_url(self):
+        messages.success(self.request, 'Category successfully updated')
+        return super().get_success_url()
+
 class CategoryDelete(DeleteView):
     model = Category
     success_url = '/'
+
+    def get_success_url(self):
+        messages.success(self.request, 'Category successfully deleted')
+        return super().get_success_url()
 
 
 
@@ -41,6 +55,10 @@ class AlbumCreate(CreateView):
     success_url = '/'
     fields = album_field
 
+    def get_success_url(self):
+        messages.success(self.request, 'Album successfully created')
+        return super().get_success_url()
+
 class AlbumShow(DetailView):
     model = Album
 
@@ -49,9 +67,17 @@ class AlbumUpdate(UpdateView):
     success_url = '/'
     fields = album_field
 
+    def get_success_url(self):
+        messages.success(self.request, 'Album successfully updated')
+        return super().get_success_url()
+
 class AlbumDelete(DeleteView):
     model = Album
     success_url = '/'
+
+    def get_success_url(self):
+        messages.success(self.request, 'Album successfully deleted')
+        return super().get_success_url()
 
 
 
@@ -63,6 +89,10 @@ class PhotographCreate(CreateView):
     success_url = '/'
     fields = photograph_field
 
+    def get_success_url(self):
+        messages.success(self.request, 'Photo successfully created')
+        return super().get_success_url()
+
 class PhotographShow(DetailView):
     model = Photograph
 
@@ -71,6 +101,14 @@ class PhotographUpdate(UpdateView):
     success_url = '/'
     fields = photograph_field
 
+    def get_success_url(self):
+        messages.success(self.request, 'Photo successfully updated')
+        return super().get_success_url()
+
 class PhotographDelete(DeleteView):
     model = Photograph
     success_url = '/'
+
+    def get_success_url(self):
+        messages.success(self.request, 'Photo successfully deleted')
+        return super().get_success_url()
