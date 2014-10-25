@@ -7,12 +7,15 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
     <meta charset="UTF-8">
     <title>Wicky</title>
 </head>
 <body>
 {% include 'base/navigation.html' %}
+<div class="container">
 {% block content %}
 {% endblock %}
+</div>
 </body>
 </html>
