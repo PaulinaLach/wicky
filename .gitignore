@@ -65,3 +65,6 @@ com_crashlytics_export_strings.xml
 
 # SQLite3
 *.sqlite3
+
+# image folder
+images
