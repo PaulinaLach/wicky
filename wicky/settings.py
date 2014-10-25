@@ -114,4 +114,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 IMAGE_ROOT = os.path.join(BASE_DIR, "images")
