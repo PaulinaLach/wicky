@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
-
+{% load bootstrap3 %}
 {% block content %}
 
-<form action="" method="post">
+<form action="" method="post" class="form" style="width: 400px">
 {% csrf_token %}
-{{ form.as_p }}
-<button>Submit</button>
+{% bootstrap_form form %}
+{% buttons %}
+    <button type="submit" class="btn btn-primary">
+        Submit
+    </button>
+{% endbuttons %}
 </form>
 
 {% endblock %}
