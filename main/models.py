@@ -16,7 +16,7 @@ class Album(models.Model):
 
 class Photograph(models.Model):
     name = models.CharField(max_length=100)
-    data = models.ImageField(upload_to='images/')
+    data = models.ImageField(upload_to='images/photos/')
     comment = models.TextField()
     latitude = models.FloatField()
     longitude = models.FloatField()

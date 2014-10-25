@@ -114,3 +114,4 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
+IMAGE_ROOT = os.path.join(BASE_DIR, "images")
