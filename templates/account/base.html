@@ -6,11 +6,15 @@
     {% load bootstrap3 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'account/main.css' %}" />
     <meta charset="UTF-8">
     <title>Wicky</title>
 </head>
 <body>
+<div id="container">
 {% block content %}
 {% endblock %}
+</div>
 </body>
 </html>

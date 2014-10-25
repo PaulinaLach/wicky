@@ -2,15 +2,27 @@
 
 {% block content %}
 
-<form action="#" method="POST">
+<h2>Wicky</h2>
+
+<form class="authform well" action="#" method="POST">
 {% csrf_token %}
 
-<label for="login">E-mail</label>
-<input class="form-control" name="login" id="login" type="text"/>
+    <div class="form-group">
+        <label for="login">E-mail</label>
+        <input class="form-control" name="login" id="login" type="text"/>
+    </div>
 
-<label for="password">Password</label>
-<input class="form-control" name="password" id="password" type="password" />
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" name="password" id="password" type="password" />
+    </div>
 
-<button class="form-control">Login</button>
+    <div class="checkbox">
+        <label class="checkbox" for="remember_me"></label>
+    </div>
+
+    <button class="btn btn-large btn-block btn-primary" type="submit">Login</button>
+
 </form>
+
 {% endblock %}
