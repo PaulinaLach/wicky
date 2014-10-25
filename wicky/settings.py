@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'PIL',
     'main',
+    'user_account',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,3 +116,4 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 IMAGE_ROOT = os.path.join(BASE_DIR, "images")
+AUTH_USER_MODEL = 'user_account.UserAccount'
