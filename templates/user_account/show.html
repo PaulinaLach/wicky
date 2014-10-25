@@ -1,5 +1,62 @@
 {% extends 'base.html' %}
+{% load app_filters %}
 
 {% block content %}
-{{ user }}
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3 style="text-align: right">
+                {{ user.first_name | name:user.last_name }}
+            </h3>
+
+            <div style="text-align: right">
+                {{ user.about }}
+            </div>
+        </div>
+        <div class="col-md-8">
+            {% if user.avatar %}
+                <a href="#" class="thumbnail">
+                    <img width="300px" src="/{{ user.avatar.url }}" alt="Avatar"/>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <hr/>
+
+    <div class="row">
+        <h4>
+            Photos
+        </h4>
+
+        <div id="carousel-photo" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                {% for photo in photos %}
+                    <li data-target="#carousel-photo" data-slide-to="0" {% if forloop.first %}class="active"{% endif %}></li>
+                {% endfor %}
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                {% for photo in photos %}
+                    <div class="item {% if forloop.first %}active{% endif %}">
+                        <img src="/{{ photo.data }}" alt="Photo" />
+
+                        <div class="carousel-caption">
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-photo" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-photo" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+
 {% endblock %}
