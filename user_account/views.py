@@ -18,6 +18,5 @@ def set_gender(sender, **kwargs):
 def user_show(request, username):
     user = UserAccount.objects.filter(username=username)
     photographs = Photograph.objects.filter(user=user).order_by('-creation_date')[:5]
-    print(photographs.first().url)
-    return render(request, 'user_account/show.html', {user: user, photographs: photographs})
+    return render(request, 'user_account/show.html', {user: user, 'photos': photographs})
 
