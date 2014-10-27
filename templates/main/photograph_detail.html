@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ photograph.name }}</h1>
-<img src="{{ photograph.data.url }}" />
+    <div class="row">
+    <h1>{{ photograph.name }} - <small>{{ photograph.user.username }}</small></h1>
+    <img src="/{{ photograph.data }}" class="img-responsive" alt="{{ photograph.name }}" />
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <h3>Description</h3>
+            <div class="comment"> {{ photograph.comment }}</div>
+        </div>
+        <div class="col-md-5" style="text-align: right;margin-top: 20px">Photo uploaded: <b>{{ photograph.creation_date }}</b></div>
+    </div>
+<hr/>
 {% endblock %}
