@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
     {% for photograph in photograph_list %}
-        <a href="{% url 'photograph_update' photograph.id %}" ><li>{{ photograph.name }} {{ photograph.id }}<img src="/{{ photograph.data }}" /> </li></a>
+        <a href="{% url 'photograph_show' photograph.id %}" ><li>{{ photograph.name }} {{ photograph.id }}<img src="/{{ photograph.data }}" /> </li></a>
         {{ photograph.data }}
     {% endfor %}
 </ul>
