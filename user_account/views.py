@@ -2,7 +2,7 @@ from django.dispatch import receiver
 from allauth.account.signals import user_signed_up
 from django.shortcuts import render
 from user_account.models import UserAccount
-
+from main.models import Photograph
 
 @receiver(user_signed_up)
 def set_gender(sender, **kwargs):
@@ -17,4 +17,6 @@ def set_gender(sender, **kwargs):
 
 def user_show(request, username):
     user = UserAccount.objects.filter(username=username)
-    return render(request, 'user_account/show.html', {user: user})
+    photographs = Photograph.objects.filter(user=user).order_by('-creation_date')[:5]
+    return render(request, 'user_account/show.html', {user: user, 'photos': photographs})
+

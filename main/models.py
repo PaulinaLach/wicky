@@ -17,12 +17,16 @@ class Album(models.Model):
 class Photograph(models.Model):
     name = models.CharField(max_length=100)
     data = models.ImageField(upload_to='images/photos/')
-    comment = models.TextField()
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    comment = models.TextField(blank=True)
+    latitude = models.FloatField(blank=True)
+    longitude = models.FloatField(blank=True)
+    creation_date = models.DateTimeField(auto_now_add=True, editable=False)
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    category = models.ForeignKey(Category)
-    albums = models.ManyToManyField(Album)
+    category = models.ForeignKey(Category, blank=True)
+    albums = models.ManyToManyField(Album, blank=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        get_latest_by = 'creation_date'
