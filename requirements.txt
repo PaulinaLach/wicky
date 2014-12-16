@@ -2,3 +2,5 @@ Django==1.7
 django-bootstrap3
 django-allauth
 Pillow
+django_compressor
+django-libsass

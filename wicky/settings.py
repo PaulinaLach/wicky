@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     'PIL',
     'main',
     'user_account',
+    'compressor',
+    'django_libsass',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,4 +122,16 @@ IMAGE_ROOT = os.path.join(BASE_DIR, "images")
 AUTH_USER_MODEL = 'user_account.UserAccount'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ROOT = (os.path.join(BASE_DIR, 'static'))
+COMPRESS_PRECOMPILERS = (
+    ('text/scss', 'django_libsass.SassCompiler'),
 )
