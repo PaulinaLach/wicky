@@ -21,6 +21,7 @@ class Photograph(models.Model):
     latitude = models.FloatField(blank=True)
     longitude = models.FloatField(blank=True)
     creation_date = models.DateTimeField(auto_now_add=True, editable=False)
+    pluses = models.IntegerField(default=0)
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     category = models.ForeignKey(Category, blank=True)
     albums = models.ManyToManyField(Album, blank=True)

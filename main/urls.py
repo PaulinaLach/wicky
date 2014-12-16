@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^photographs/(?P<pk>\d+)/$', PhotographShow.as_view(), name='photograph_show'),
     url(r'^photographs/(?P<pk>\d+)/update$', PhotographUpdate.as_view(), name='photograph_update'),
     url(r'^photographs/(?P<pk>\d+)/delete', PhotographDelete.as_view(), name='photograph_delete'),
+    url(r'^photographs/(?P<pk>\d+)/plus', 'main.views.plusPhoto', name='photo_plus')
 
 
 )

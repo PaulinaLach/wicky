@@ -112,3 +112,6 @@ class PhotographDelete(DeleteView):
     def get_success_url(self):
         messages.success(self.request, 'Photo successfully deleted')
         return super().get_success_url()
+
+def plusPhoto(request, photo):
+    Photograph.objects.filter(id=photo).pluses += 1
