@@ -124,4 +124,7 @@ class PhotographDelete(DeleteView):
 def plusPhoto(request, photo):
     user = get_user_model()
     photo = Photograph.objects.filter(id=photo)
-    user.pluses.add(photo)
+    if user.pluses.get(id=photo.id).count() > 0:
+        user.pluses.remove(photo)
+    else:
+        user.pluses.add(photo)
