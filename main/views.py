@@ -100,8 +100,7 @@ class PhotographShow(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(kwargs)
-        context['pluses'] = UserAccount.objects.filter(photograph=kwargs['pk']).len()
+        context['pluses'] = UserAccount.objects.filter(pluses=kwargs['object'].id).count()
         return context
 
 
