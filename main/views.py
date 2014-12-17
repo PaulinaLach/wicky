@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Photograph, Album, Category
 from django.contrib import messages
+from allauth.account.utils import get_user_model
+from user_account.models import UserAccount
 
 category_field = ['name']
 album_field = ['name', 'user']
@@ -96,6 +98,13 @@ class PhotographCreate(CreateView):
 class PhotographShow(DetailView):
     model = Photograph
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(kwargs)
+        context['pluses'] = UserAccount.objects.filter(photograph=kwargs['pk']).len()
+        return context
+
+
 class PhotographUpdate(UpdateView):
     model = Photograph
     success_url = '/'
@@ -114,4 +123,6 @@ class PhotographDelete(DeleteView):
         return super().get_success_url()
 
 def plusPhoto(request, photo):
-    Photograph.objects.filter(id=photo).pluses += 1
+    user = get_user_model()
+    photo = Photograph.objects.filter(id=photo)
+    user.pluses.add(photo)
